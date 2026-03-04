@@ -1,8 +1,9 @@
 // ===== Background "rede" animada (Canvas) =====
 const canvas = document.getElementById("bg");
-const ctx = canvas.getContext("2d");
+const ctx = canvas.getContext("2d", { alpha: true });
 
 let w, h, dpr;
+
 function resize() {
   dpr = Math.min(window.devicePixelRatio || 1, 2);
   w = canvas.width = Math.floor(window.innerWidth * dpr);
@@ -14,19 +15,23 @@ window.addEventListener("resize", resize);
 resize();
 
 const N = 70;
-const points = Array.from({ length: N }, () => ({
-  x: Math.random() * w,
-  y: Math.random() * h,
-  vx: (Math.random() - 0.5) * 0.35 * dpr,
-  vy: (Math.random() - 0.5) * 0.35 * dpr,
-  r: (Math.random() * 1.6 + 0.6) * dpr,
-}));
+let points = [];
+
+function resetPoints() {
+  points = Array.from({ length: N }, () => ({
+    x: Math.random() * w,
+    y: Math.random() * h,
+    vx: (Math.random() - 0.5) * 0.35 * dpr,
+    vy: (Math.random() - 0.5) * 0.35 * dpr,
+    r: (Math.random() * 1.6 + 0.6) * dpr,
+  }));
+}
+resetPoints();
 
 function draw() {
   ctx.clearRect(0, 0, w, h);
 
   // Pontos
-  ctx.globalAlpha = 0.9;
   for (const p of points) {
     p.x += p.vx;
     p.y += p.vy;
@@ -46,6 +51,7 @@ function draw() {
       const a = points[i], b = points[j];
       const dx = a.x - b.x, dy = a.y - b.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
+
       const max = 140 * dpr;
       if (dist < max) {
         const alpha = (1 - dist / max) * 0.35;
@@ -63,12 +69,17 @@ function draw() {
 }
 draw();
 
+// Se a tela mudar muito (ex.: rotação), regenere pontos
+window.addEventListener("resize", () => {
+  resetPoints();
+});
+
 // ===== Exportar card como PNG (html2canvas) =====
 const btn = document.getElementById("btnDownload");
 btn.addEventListener("click", async () => {
   const card = document.getElementById("card");
 
-  // Render em boa qualidade
+  // Dica: quanto maior o scale, melhor a qualidade (e maior o arquivo)
   const scale = Math.min(window.devicePixelRatio || 1, 2);
 
   const canvasCard = await html2canvas(card, {

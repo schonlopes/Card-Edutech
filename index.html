@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Card - EDUTECH On-line 2026</title>
 
-  <!-- Fonte tech/mono -->
+  <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
@@ -14,13 +14,13 @@
 </head>
 <body>
   <!-- Background animado -->
-  <canvas id="bg"></canvas>
+  <canvas id="bg" aria-hidden="true"></canvas>
 
   <main class="wrap">
-    <section class="card" id="card">
+    <section class="card" id="card" aria-label="Card de divulgação EDUTECH On-line 2026">
       <header class="top">
         <div class="brand left">
-          <div class="mark"></div>
+          <div class="mark" aria-hidden="true"></div>
           <div class="brand-text">
             <div class="brand-title">PROGRAMAÇÃO</div>
             <div class="brand-sub">PARANÁ</div>
@@ -28,7 +28,7 @@
         </div>
 
         <div class="brand right">
-          <div class="mark alt"></div>
+          <div class="mark alt" aria-hidden="true"></div>
           <div class="brand-text align-right">
             <div class="brand-title">EDUTECH</div>
             <div class="brand-sub">ON-LINE</div>
@@ -47,25 +47,25 @@
       <section class="content">
         <div class="col">
           <div class="item">
-            <span class="icon">💻</span>
+            <span class="icon" aria-hidden="true">💻</span>
             <span>Programação Front-End (HTML, CSS, JavaScript)</span>
           </div>
 
           <div class="bullets">
-            <div class="bullet"><span class="icon">🌐</span>100% on-line</div>
-            <div class="bullet"><span class="icon">💸</span>Gratuito</div>
-            <div class="bullet"><span class="icon">📄</span>Com certificado</div>
+            <div class="bullet"><span class="icon" aria-hidden="true">🌐</span><span>100% on-line</span></div>
+            <div class="bullet"><span class="icon" aria-hidden="true">💸</span><span>Gratuito</span></div>
+            <div class="bullet"><span class="icon" aria-hidden="true">📄</span><span>Com certificado</span></div>
           </div>
         </div>
 
         <div class="col">
           <div class="subtitle">Aprenda:</div>
           <div class="item">
-            <span class="icon">📊</span>
+            <span class="icon" aria-hidden="true">📊</span>
             <span>Análise de Dados</span>
           </div>
           <div class="item">
-            <span class="icon">🤖</span>
+            <span class="icon" aria-hidden="true">🤖</span>
             <span>Inteligência Artificial</span>
           </div>
         </div>
@@ -73,34 +73,30 @@
 
       <section class="audience">
         <div class="subtitle center">Público-alvo:</div>
-        <div class="aud-line"><span class="icon">🎓</span>Estudantes do Ensino Médio</div>
-        <div class="aud-line"><span class="icon">👩‍🏫</span>Professores e Funcionários</div>
-        <div class="aud-line">da Rede Pública Estadual do Paraná</div>
+        <div class="aud-line"><span class="icon" aria-hidden="true">🎓</span><span>Estudantes do Ensino Médio</span></div>
+        <div class="aud-line"><span class="icon" aria-hidden="true">👩‍🏫</span><span>Professores e Funcionários</span></div>
+        <div class="aud-line"><span>da Rede Pública Estadual do Paraná</span></div>
       </section>
 
       <section class="dates">
-        <div class="date-line"><span class="icon">📅</span><b>Inscrições:</b> 02/03 a 13/03/2026</div>
-        <div class="date-line"><span class="icon">🔒</span>Acesse com sua conta <b>@escola</b></div>
-        <div class="date-line">Vagas preenchidas por ordem de inscrição</div>
+        <div class="date-line"><span class="icon" aria-hidden="true">📅</span><span><b>Inscrições:</b> 02/03 a 13/03/2026</span></div>
+        <div class="date-line"><span class="icon" aria-hidden="true">🔒</span><span>Acesse com sua conta <b>@escola</b></span></div>
+        <div class="date-line"><span>Vagas preenchidas por ordem de inscrição</span></div>
       </section>
 
       <footer class="footer">
-        <a class="link" href="https://forms.gle/4eaEs213rQtuMZj86" target="_blank" rel="noopener">
-          🔗 Link para inscrição: https://forms.gle/4eaEs213rQtuMZj86
+        <a class="link" href="https://forms.gle/4eaEs213rQtuMZJ86" target="_blank" rel="noopener">
+          🔗 Link para inscrição: https://forms.gle/4eaEs213rQtuMZJ86
         </a>
 
         <div class="actions">
-          <a class="cta" href="https://forms.gle/4eaEs213rQtuMZj86" target="_blank" rel="noopener">
+          <a class="cta" href="https://forms.gle/4eaEs213rQtuMZJ86" target="_blank" rel="noopener">
             INSCREVA-SE
           </a>
           <button class="ghost" id="btnDownload" type="button">Baixar como PNG</button>
         </div>
       </footer>
     </section>
-
-    <p class="hint">
-      Dica: no GitHub Pages, esse card já fica com link clicável e botão.
-    </p>
   </main>
 
   <!-- html2canvas (export PNG) -->
