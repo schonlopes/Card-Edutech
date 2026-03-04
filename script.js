@@ -11,7 +11,10 @@ function resize() {
   canvas.style.width = "100%";
   canvas.style.height = "100%";
 }
-window.addEventListener("resize", resize);
+window.addEventListener("resize", () => {
+  resize();
+  resetPoints();
+});
 resize();
 
 const N = 70;
@@ -45,14 +48,14 @@ function draw() {
     ctx.fill();
   }
 
-  // Linhas entre pontos próximos
+  // Linhas
   for (let i = 0; i < points.length; i++) {
     for (let j = i + 1; j < points.length; j++) {
       const a = points[i], b = points[j];
       const dx = a.x - b.x, dy = a.y - b.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
-
       const max = 140 * dpr;
+
       if (dist < max) {
         const alpha = (1 - dist / max) * 0.35;
         ctx.strokeStyle = `rgba(36,214,255,${alpha})`;
@@ -68,28 +71,3 @@ function draw() {
   requestAnimationFrame(draw);
 }
 draw();
-
-// Se a tela mudar muito (ex.: rotação), regenere pontos
-window.addEventListener("resize", () => {
-  resetPoints();
-});
-
-// ===== Exportar card como PNG (html2canvas) =====
-const btn = document.getElementById("btnDownload");
-btn.addEventListener("click", async () => {
-  const card = document.getElementById("card");
-
-  // Dica: quanto maior o scale, melhor a qualidade (e maior o arquivo)
-  const scale = Math.min(window.devicePixelRatio || 1, 2);
-
-  const canvasCard = await html2canvas(card, {
-    backgroundColor: null,
-    scale,
-    useCORS: true
-  });
-
-  const a = document.createElement("a");
-  a.download = "card-edutech-2026.png";
-  a.href = canvasCard.toDataURL("image/png");
-  a.click();
-});
